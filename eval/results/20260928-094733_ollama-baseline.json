@@ -1,0 +1,858 @@
+{
+  "label": "ollama-baseline",
+  "timestamp": "2026-09-28T09:47:33",
+  "config": {
+    "provider": "ollama",
+    "model": "gemma3:4b",
+    "reasoning_effort": "low",
+    "judge_model": "gemma3:4b",
+    "top_k": 5,
+    "min_similarity": 0.0,
+    "chunk_config": "200/40",
+    "embedding_model": "bge-m3"
+  },
+  "summary": {
+    "in_scope_total": 25,
+    "correct": 16,
+    "partial": 8,
+    "incorrect": 0,
+    "false_refusals": 1,
+    "out_of_scope_total": 5,
+    "correct_refusals": 5,
+    "errors": 0,
+    "retrieval_hit_rate": 1.0,
+    "citation_hit_rate": 0.88,
+    "latency_ms_mean": 5348,
+    "latency_ms_p50": 4494,
+    "latency_ms_p95": 9934,
+    "input_tokens": 56126,
+    "output_tokens": 1905,
+    "est_cost_usd": 0.0,
+    "est_cost_per_1k_questions_usd": 0.0
+  },
+  "results": [
+    {
+      "id": "q01",
+      "language": "en",
+      "question": "What's the difference between single vision and progressive lenses?",
+      "expected_in_scope": true,
+      "expected_answer": "Single vision lenses have one power and correct one distance (far or near). Progressive lenses correct distance (top), intermediate (middle), and near (bottom) vision in one lens with no visible line, for people with presbyopia.",
+      "expected_sources": [
+        "lens-single-vision",
+        "lens-progressive"
+      ],
+      "answer": "Single vision lenses correct vision at a single distance, either for far away or up close. Progressive lenses, also called no-line bifocals, correct vision at all distances – distance, intermediate, and near – in one lens. Progressive lenses have no visible line and include an intermediate zone, while bifocal lenses have a visible line and no intermediate zone. For people who spend long hours at a desk, dedicated office or computer lenses are an alternative, with a larger intermediate zone.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-progressive",
+        "lens-single-vision"
+      ],
+      "top_similarity": 0.6745,
+      "cited_doc_ids": [
+        "lens-progressive",
+        "lens-single-vision"
+      ],
+      "latency_ms": 9934,
+      "input_tokens": 1611,
+      "output_tokens": 110,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer provides more detailed information about office lenses and slightly rephrases the reference, but it doesn't contradict the core explanation of the difference between single vision and progressive lenses.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q02",
+      "language": "en",
+      "question": "How long does it take to get used to progressive lenses?",
+      "expected_in_scope": true,
+      "expected_answer": "Most people adapt within 1 to 2 weeks.",
+      "expected_sources": [
+        "lens-progressive"
+      ],
+      "answer": "Most people adapt to progressive lenses within 1 to 2 weeks. Tips for adapting:\n\n- Wear the new glasses consistently all day rather than switching back to old glasses.\n- Point your nose at what you want to see: turn your head rather than only moving your eyes sideways.\n- To read, lower your eyes, not your head.\n- Take extra care on stairs at first. Tilt your head down slightly so you look through the distance part of the lens.\n\nSome soft blur at the lower sides of the lens is normal. It is a trade-off of every progressive design. Premium \"freeform\" designs have wider clear zones and less side blur.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-progressive",
+        "lensa-bifokal",
+        "lens-photochromic"
+      ],
+      "top_similarity": 0.7856,
+      "cited_doc_ids": [
+        "lens-progressive"
+      ],
+      "latency_ms": 8773,
+      "input_tokens": 1576,
+      "output_tokens": 144,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer correctly states the typical adaptation timeframe (1-2 weeks) and provides helpful tips, but it goes beyond the scope of the question by offering detailed adaptation strategies and discussing lens features.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q03",
+      "language": "id",
+      "question": "Berapa lama waktu adaptasi untuk lensa progresif?",
+      "expected_in_scope": true,
+      "expected_answer": "Sekitar 1–2 minggu untuk kebanyakan orang.",
+      "expected_sources": [
+        "lens-progressive",
+        "lensa-bifokal"
+      ],
+      "answer": "Sebagian besar orang beradaptasi dengan lensa progresif dalam 1 hingga 2 minggu. Tips untuk beradaptasi:\n\n- Kenakan kacamata baru secara konsisten sepanjang hari daripada beralih kembali ke kacamata lama.\n- Arahkan hidung Anda ke arah yang ingin Anda lihat: putar kepala Anda daripada hanya menggerakkan mata Anda ke samping.\n- Untuk membaca, turunkan pandangan Anda, bukan kepala Anda.\n- Berhati-hatilah saat berjalan di tangga pada awalnya. Condongkan sedikit kepala Anda ke bawah sehingga Anda melihat melalui bagian jarak jauh lensa.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-progressive",
+        "kebijakan-pengembalian",
+        "lensa-bifokal",
+        "kebijakan-pesanan"
+      ],
+      "top_similarity": 0.724,
+      "cited_doc_ids": [
+        "lens-progressive"
+      ],
+      "latency_ms": 7391,
+      "input_tokens": 1940,
+      "output_tokens": 131,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer provides additional helpful tips for adapting to progressive lenses, but it misses the core information about the typical adaptation timeframe, which is 1-2 weeks.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q04",
+      "language": "en",
+      "question": "Do blue light glasses reduce eye strain from computer screens?",
+      "expected_in_scope": true,
+      "expected_answer": "Current research does not show that they reduce digital eye strain; a 2023 Cochrane review found little or no benefit and the American Academy of Ophthalmology does not recommend them. Habits like the 20-20-20 rule help more.",
+      "expected_sources": [
+        "lens-blue-light",
+        "mata-lelah-digital"
+      ],
+      "answer": "Current research does not show that blue-light filtering lenses reduce digital eye strain. The 20-20-20 rule, an up-to-date prescription, and reducing screen time before bed are more effective. Additionally, research from the Cochrane systematic review found little or no short-term benefit for eye strain. SOURCES: lens-blue-light, lens-blue-light, mata-lelah-digital",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-blue-light",
+        "mata-lelah-digital",
+        "eye-health-faq"
+      ],
+      "top_similarity": 0.7504,
+      "cited_doc_ids": [],
+      "latency_ms": 6429,
+      "input_tokens": 1868,
+      "output_tokens": 87,
+      "retrieval_hit": true,
+      "citation_hit": false,
+      "judge_reason": "The chatbot's answer correctly identifies that current research doesn't support blue light glasses reducing eye strain, but it adds extraneous information about prescription and screen time reduction that isn't present in the reference, making it partial.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q05",
+      "language": "id",
+      "question": "Apakah lensa fotokromik bisa menjadi gelap di dalam mobil?",
+      "expected_in_scope": true,
+      "expected_answer": "Kebanyakan tidak terlalu gelap di dalam mobil karena kaca depan menahan sebagian besar sinar UV. Ada varian khusus yang bisa gelap sebagian. Untuk mengemudi disarankan kacamata hitam.",
+      "expected_sources": [
+        "lens-photochromic"
+      ],
+      "answer": "Lensa fotokromik biasanya tidak menjadi terlalu gelap di dalam mobil karena kaca depan menghalangi sebagian besar sinar UV. Beberapa varian khusus dirancang untuk menjadi gelap sebagian di belakang kaca windshield. Untuk mengemudi di bawah sinar matahari yang terik, kacamata hitam (idealnya terpolarisasi) disarankan.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-photochromic",
+        "kacamata-hitam",
+        "lens-coatings"
+      ],
+      "top_similarity": 0.6942,
+      "cited_doc_ids": [
+        "lens-photochromic"
+      ],
+      "latency_ms": 5889,
+      "input_tokens": 1657,
+      "output_tokens": 76,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer accurately reflects the reference answer's key points regarding UV blockage and the recommendation for sunglasses, providing slightly more detail about polarized sunglasses.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q06",
+      "language": "en",
+      "question": "I suddenly see a lot of new floaters and flashes of light. What should I do?",
+      "expected_in_scope": true,
+      "expected_answer": "This is a warning sign (possible retinal detachment) and needs urgent care: see an eye doctor or go to an emergency department immediately.",
+      "expected_sources": [
+        "eye-health-faq"
+      ],
+      "answer": "Seek care immediately at an eye doctor or emergency department. A sudden increase in floaters, especially with flashes of light or a shadow or curtain over part of your vision, can be a sign of retinal detachment and needs urgent care.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "eye-health-faq",
+        "lens-blue-light",
+        "mata-lelah-digital"
+      ],
+      "top_similarity": 0.5557,
+      "cited_doc_ids": [
+        "eye-health-faq"
+      ],
+      "latency_ms": 3250,
+      "input_tokens": 1821,
+      "output_tokens": 61,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer accurately reflects the urgency and potential seriousness of the symptoms described in the reference answer, making it correct.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q07",
+      "language": "en",
+      "question": "What lens material is best for a child's glasses?",
+      "expected_in_scope": true,
+      "expected_answer": "Polycarbonate or Trivex, because they are impact resistant.",
+      "expected_sources": [
+        "lens-materials",
+        "miopia-anak"
+      ],
+      "answer": "Polycarbonate or Trivex lenses are recommended for children because they are impact resistant. Frame TR90 is also a good choice for active children.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-materials",
+        "miopia-anak",
+        "lens-single-vision",
+        "frame-materials"
+      ],
+      "top_similarity": 0.6239,
+      "cited_doc_ids": [
+        "lens-materials",
+        "miopia-anak"
+      ],
+      "latency_ms": 4491,
+      "input_tokens": 1873,
+      "output_tokens": 42,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot adds additional information about frames, which is not present in the reference answer, making it a partial response.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q08",
+      "language": "en",
+      "question": "My prescription is -5.00. Which lens index should I choose?",
+      "expected_in_scope": true,
+      "expected_answer": "As a general guide, ±4.25 to ±6.00 suits 1.67 high-index. Frame size also matters.",
+      "expected_sources": [
+        "lens-materials"
+      ],
+      "answer": "For a prescription of -5.00, you should choose a 1.67 index lens. This is the recommended index for prescriptions between ±4.25 and ±6.00.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-materials",
+        "prescription-reading"
+      ],
+      "top_similarity": 0.6983,
+      "cited_doc_ids": [
+        "lens-materials"
+      ],
+      "latency_ms": 5034,
+      "input_tokens": 1951,
+      "output_tokens": 53,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer accurately reflects the reference's recommendation and provides a clear, concise response to the question.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q09",
+      "language": "en",
+      "question": "What do OD and OS mean on my prescription?",
+      "expected_in_scope": true,
+      "expected_answer": "OD means the right eye and OS means the left eye.",
+      "expected_sources": [
+        "prescription-reading"
+      ],
+      "answer": "OD means the right eye, and OS means the left eye.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "prescription-reading",
+        "lens-materials"
+      ],
+      "top_similarity": 0.6804,
+      "cited_doc_ids": [
+        "prescription-reading"
+      ],
+      "latency_ms": 3251,
+      "input_tokens": 1754,
+      "output_tokens": 20,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer perfectly matches the reference answer, stating the definitions of OD and OS accurately.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q10",
+      "language": "id",
+      "question": "Apa arti AXIS di resep kacamata?",
+      "expected_in_scope": true,
+      "expected_answer": "AXIS adalah angka 1–180 derajat yang menunjukkan arah koreksi silinder (astigmatisme). Hanya muncul bersama nilai CYL, dan merupakan arah, bukan kekuatan.",
+      "expected_sources": [
+        "prescription-reading"
+      ],
+      "answer": "The axis is a direction, not a strength.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "prescription-reading",
+        "lens-materials",
+        "kebijakan-pengembalian"
+      ],
+      "top_similarity": 0.5561,
+      "cited_doc_ids": [
+        "prescription-reading"
+      ],
+      "latency_ms": 3286,
+      "input_tokens": 2034,
+      "output_tokens": 17,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer accurately conveys the core meaning of the reference, stating that the axis represents a direction, but omits the crucial detail about its range (1-180 degrees) and its association with cylinder values.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q11",
+      "language": "en",
+      "question": "Can I use my glasses prescription to buy contact lenses?",
+      "expected_in_scope": true,
+      "expected_answer": "No. A contact lens prescription also needs base curve, diameter, and brand, and for prescriptions stronger than about ±4.00 the power differs. A contact lens fitting is needed.",
+      "expected_sources": [
+        "prescription-reading",
+        "jenis-lensa-kontak"
+      ],
+      "answer": "A glasses prescription cannot be used directly to buy contact lenses. A contact lens prescription also includes the base curve (BC), the diameter (DIA), and the lens brand. For prescriptions stronger than about ±4.00, the contact lens power is also different from the glasses power, because contact lenses sit directly on the eye. A contact lens fitting is needed.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "prescription-reading",
+        "kebijakan-pengembalian",
+        "policy-eye-exam-booking",
+        "lens-single-vision",
+        "jenis-lensa-kontak"
+      ],
+      "top_similarity": 0.7015,
+      "cited_doc_ids": [
+        "prescription-reading",
+        "jenis-lensa-kontak"
+      ],
+      "latency_ms": 6575,
+      "input_tokens": 1912,
+      "output_tokens": 88,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer accurately reflects all the key information from the reference, providing a comprehensive explanation of why a glasses prescription cannot be used for contact lenses.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q12",
+      "language": "en",
+      "question": "What does 52□18 140 printed on my frame mean?",
+      "expected_in_scope": true,
+      "expected_answer": "Lens width 52 mm, bridge width 18 mm, temple length 140 mm.",
+      "expected_sources": [
+        "frame-fit-guide"
+      ],
+      "answer": "52 is the lens width in millimetres, 18 is the bridge width (the distance between the two lenses) in millimetres, and 140 is the temple (arm) length in millimetres.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "frame-fit-guide",
+        "prescription-reading",
+        "lens-materials",
+        "policy-warranty"
+      ],
+      "top_similarity": 0.6218,
+      "cited_doc_ids": [
+        "frame-fit-guide"
+      ],
+      "latency_ms": 5166,
+      "input_tokens": 2027,
+      "output_tokens": 57,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot accurately describes each component of the measurement and provides the correct units, aligning perfectly with the reference answer.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q13",
+      "language": "en",
+      "question": "I have a nickel allergy. Which frame material should I choose?",
+      "expected_in_scope": true,
+      "expected_answer": "Titanium, stainless steel, or acetate; avoid monel and other nickel alloys.",
+      "expected_sources": [
+        "frame-materials"
+      ],
+      "answer": "You should choose titanium, stainless steel, or acetate frames, and avoid monel and other nickel alloys.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "frame-materials",
+        "frame-fit-guide",
+        "lens-materials"
+      ],
+      "top_similarity": 0.7379,
+      "cited_doc_ids": [
+        "frame-materials"
+      ],
+      "latency_ms": 3843,
+      "input_tokens": 1851,
+      "output_tokens": 32,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer perfectly matches the reference answer, providing the same key recommendations for frame materials while avoiding nickel-based alloys.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q14",
+      "language": "en",
+      "question": "Can I rinse my contact lens case with tap water?",
+      "expected_in_scope": true,
+      "expected_answer": "No. Never use water; rinse the case with fresh solution, let it air-dry upside down, and replace it at least every 3 months.",
+      "expected_sources": [
+        "contact-lens-care"
+      ],
+      "answer": "Never use water of any kind (tap, bottled, or distilled) or saliva to clean, rinse, or store lenses. Water can carry Acanthamoeba, an organism that causes a serious and painful eye infection.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "contact-lens-care",
+        "perawatan-kacamata",
+        "jenis-lensa-kontak"
+      ],
+      "top_similarity": 0.669,
+      "cited_doc_ids": [
+        "contact-lens-care"
+      ],
+      "latency_ms": 5122,
+      "input_tokens": 1929,
+      "output_tokens": 58,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer correctly identifies the danger of using water and provides additional detail about the potential infection, aligning with the reference's core advice.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q15",
+      "language": "id",
+      "question": "Bolehkah saya tidur memakai lensa kontak?",
+      "expected_in_scope": true,
+      "expected_answer": "Tidak, kecuali lensa tersebut diresepkan untuk pemakaian semalaman. Tidur memakai lensa kontak sangat meningkatkan risiko infeksi.",
+      "expected_sources": [
+        "contact-lens-care"
+      ],
+      "answer": "Tidur dengan lensa kontak sangat tidak disarankan karena dapat meningkatkan risiko infeksi. Sebaiknya konsultasikan dengan profesional mata Anda mengenai penggunaan lensa kontak.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "contact-lens-care",
+        "jenis-lensa-kontak",
+        "kebijakan-pengembalian",
+        "policy-eye-exam-booking"
+      ],
+      "top_similarity": 0.6225,
+      "cited_doc_ids": [
+        "contact-lens-care"
+      ],
+      "latency_ms": 4276,
+      "input_tokens": 1992,
+      "output_tokens": 39,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer correctly states the risk of infection from sleeping in contact lenses, mirroring the reference answer's core message.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q16",
+      "language": "id",
+      "question": "Apa itu lensa kontak torik?",
+      "expected_in_scope": true,
+      "expected_answer": "Lensa kontak untuk mata silinder (astigmatisme) yang dirancang agar posisinya stabil dan tidak berputar di mata.",
+      "expected_sources": [
+        "jenis-lensa-kontak"
+      ],
+      "answer": "Lensa torik dirancang agar posisinya tetap stabil dan tidak berputar di mata.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "jenis-lensa-kontak",
+        "miopia-anak",
+        "kacamata-hitam",
+        "kebijakan-pengembalian"
+      ],
+      "top_similarity": 0.6161,
+      "cited_doc_ids": [
+        "jenis-lensa-kontak"
+      ],
+      "latency_ms": 4098,
+      "input_tokens": 2057,
+      "output_tokens": 30,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer accurately states the primary function of toric contact lenses, but omits the crucial detail that they are specifically designed for cylindrical (astigmatic) eyes.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q17",
+      "language": "en",
+      "question": "What is the 20-20-20 rule?",
+      "expected_in_scope": true,
+      "expected_answer": "Every 20 minutes, look at something 20 feet (about 6 metres) away for 20 seconds.",
+      "expected_sources": [
+        "mata-lelah-digital",
+        "lens-blue-light",
+        "miopia-anak"
+      ],
+      "answer": "Every 20 minutes, look at something 20 feet (about 6 metres) away for 20 seconds.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-blue-light",
+        "prescription-reading",
+        "frame-fit-guide",
+        "mata-lelah-digital",
+        "kebijakan-pengembalian"
+      ],
+      "top_similarity": 0.3931,
+      "cited_doc_ids": [
+        "lens-blue-light"
+      ],
+      "latency_ms": 4082,
+      "input_tokens": 1963,
+      "output_tokens": 35,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer perfectly matches the reference answer, containing all key facts without contradiction.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q18",
+      "language": "id",
+      "question": "Bagaimana cara membersihkan lensa kacamata yang benar?",
+      "expected_in_scope": true,
+      "expected_answer": "Bilas dengan air mengalir yang tidak panas, gunakan sedikit sabun cuci piring lembut atau cairan pembersih lensa, bilas, lalu keringkan dengan kain mikrofiber. Jangan pakai tisu atau baju.",
+      "expected_sources": [
+        "perawatan-kacamata"
+      ],
+      "answer": "1. Bilas lensa dengan air mengalir yang tidak panas untuk menghilangkan debu dan pasir. Menggosok lensa yang berdebu dalam keadaan kering bisa menggores lensa.\n2. Oleskan sedikit sabun cuci piring yang lembut (tanpa lotion) atau cairan pembersih lensa khusus.\n3. Bilas kembali sampai bersih.\n4. Keringkan dengan kain mikrofiber yang bersih.\nJangan membersihkan lensa dengan tisu, tisu wajah, atau ujung baju, karena seratnya dapat menggores lensa. Jangan gunakan alkohol pekat, aseton, atau pembersih kaca jendela, karena dapat merusak lapisan (coating) lensa. Cuci kain mikrofiber secara rutin.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "perawatan-kacamata",
+        "contact-lens-care",
+        "jenis-lensa-kontak"
+      ],
+      "top_similarity": 0.7515,
+      "cited_doc_ids": [
+        "perawatan-kacamata"
+      ],
+      "latency_ms": 9621,
+      "input_tokens": 2030,
+      "output_tokens": 154,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer provides more detailed instructions and warnings about potential damage, which goes beyond the concise reference answer while still covering the key steps.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q19",
+      "language": "en",
+      "question": "Is it okay to leave my glasses on the car dashboard?",
+      "expected_in_scope": true,
+      "expected_answer": "No. Heat can crack the lens coating (crazing) and deform the frame. Heat damage is not covered by warranty.",
+      "expected_sources": [
+        "perawatan-kacamata",
+        "lens-coatings",
+        "policy-warranty"
+      ],
+      "answer": "Sorry, I couldn't find that information in our knowledge base. It is not okay to leave your glasses on a car dashboard as heat can damage the coatings and cause crazing. SOURCES: example-cleaning, perawatan-kacamata",
+      "predicted_in_scope": false,
+      "retrieved_doc_ids": [
+        "lens-coatings",
+        "lens-photochromic",
+        "perawatan-kacamata",
+        "policy-warranty"
+      ],
+      "top_similarity": 0.571,
+      "cited_doc_ids": [],
+      "latency_ms": 4494,
+      "input_tokens": 1765,
+      "output_tokens": 49,
+      "retrieval_hit": true,
+      "citation_hit": false,
+      "outcome": "false_refusal"
+    },
+    {
+      "id": "q20",
+      "language": "id",
+      "question": "Apakah kacamata hitam yang lebih gelap memberi perlindungan UV yang lebih baik?",
+      "expected_in_scope": true,
+      "expected_answer": "Tidak. Kegelapan lensa tidak menunjukkan perlindungan UV; lensa gelap tanpa perlindungan UV lebih berbahaya karena pupil melebar. Pilih label UV400 atau 100% UV protection.",
+      "expected_sources": [
+        "kacamata-hitam"
+      ],
+      "answer": "Lensa gelap tidak berarti lebih melindungi. Lensa gelap tanpa perlindungan UV justru lebih berbahaya, karena pupil melebar di balik lensa gelap sehingga lebih banyak sinar UV masuk ke mata.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "kacamata-hitam",
+        "lens-coatings",
+        "lens-photochromic"
+      ],
+      "top_similarity": 0.7202,
+      "cited_doc_ids": [
+        "kacamata-hitam"
+      ],
+      "latency_ms": 4521,
+      "input_tokens": 1850,
+      "output_tokens": 46,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer accurately reflects the reference answer's key points regarding the relationship between lens darkness and UV protection, stating nothing contradictory.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q21",
+      "language": "en",
+      "question": "Will wearing glasses make my child's myopia worse?",
+      "expected_in_scope": true,
+      "expected_answer": "No. Glasses do not make myopia worse; it increases because the eye is still growing. Under-correcting does not slow it down.",
+      "expected_sources": [
+        "miopia-anak",
+        "eye-health-faq"
+      ],
+      "answer": "No. Glasses do not weaken the eyes or make a prescription increase. In children, myopia usually increases because the eyeball is still growing, whether or not they wear glasses. Wearing glasses that are weaker than needed does not slow myopia down.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "miopia-anak",
+        "eye-health-faq",
+        "lens-single-vision"
+      ],
+      "top_similarity": 0.6533,
+      "cited_doc_ids": [
+        "eye-health-faq"
+      ],
+      "latency_ms": 5294,
+      "input_tokens": 2019,
+      "output_tokens": 60,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot's answer accurately reflects the reference's key points about myopia progression and the role of eye growth, making it a 'correct' response.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q22",
+      "language": "en",
+      "question": "How long is the warranty on frames?",
+      "expected_in_scope": true,
+      "expected_answer": "12 months from purchase against manufacturing defects under normal use (lenses have 6 months for coating defects).",
+      "expected_sources": [
+        "policy-warranty"
+      ],
+      "answer": "Frames are covered for 12 months from the date of purchase against manufacturing defects under normal use.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "policy-warranty",
+        "kebijakan-pengembalian",
+        "frame-materials"
+      ],
+      "top_similarity": 0.7292,
+      "cited_doc_ids": [
+        "policy-warranty"
+      ],
+      "latency_ms": 3464,
+      "input_tokens": 1686,
+      "output_tokens": 27,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer accurately reflects the key information about the frame warranty, including the duration and the conditions under which it applies.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q23",
+      "language": "id",
+      "question": "Bisakah saya mengembalikan kacamata dengan lensa resep?",
+      "expected_in_scope": true,
+      "expected_answer": "Lensa resep tidak dapat di-refund karena dibuat khusus. Namun ada jaminan adaptasi lensa progresif (ganti sekali dalam 30 hari) dan jaminan ukuran untuk resep dari pemeriksaan di toko (pemeriksaan ulang dan ganti lensa sekali dalam 30 hari).",
+      "expected_sources": [
+        "kebijakan-pengembalian"
+      ],
+      "answer": "Lensa resep dibuat khusus sesuai ukuran mata pelanggan, sehingga **tidak dapat dikembalikan untuk pengembalian dana (refund)**. Namun, ada dua jaminan berikut:\n\n- Jaminan adaptasi lensa progresif: jika pelanggan tidak dapat beradaptasi dengan lensa progresif setelah memakainya secara rutin minimal 14 hari, lensa dapat diganti satu kali secara gratis ke desain progresif lain, ke lensa bifokal, atau ke lensa single vision. Klaim harus diajukan dalam 30 hari sejak pengambilan kacamata. Jika lensa pengganti lebih mahal, selisih harga dibayar oleh pelanggan.\n- Jaminan ukuran: jika resep berasal dari pemeriksaan mata di toko kami dan pelanggan merasa tidak nyaman, kami memberikan pemeriksaan ulang gratis dan penggantian lensa satu kali dalam 30 hari. Jaminan ini tidak berlaku untuk resep dari dokter atau optik lain.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "kebijakan-pengembalian",
+        "perawatan-kacamata",
+        "jenis-lensa-kontak",
+        "prescription-reading"
+      ],
+      "top_similarity": 0.7487,
+      "cited_doc_ids": [
+        "kebijakan-pengembalian"
+      ],
+      "latency_ms": 11041,
+      "input_tokens": 1791,
+      "output_tokens": 187,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer provides additional details about the return policy beyond the reference's core statement regarding prescription lenses and the conditions for the guarantees, making it a partial answer.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q24",
+      "language": "en",
+      "question": "How long does it take to make progressive lenses?",
+      "expected_in_scope": true,
+      "expected_answer": "7 to 10 working days.",
+      "expected_sources": [
+        "kebijakan-pesanan"
+      ],
+      "answer": "Lens processing times vary:\n\n- **Stock single vision lenses (common sizes):** Can be ready in 1-2 hours or the same day.\n- **Custom single vision lenses** (e.g., high cylinder or high-index 1.74): 3-5 working days.\n- **Photochromic or special tint lenses:** 5-7 working days.\n- **Progressive and bifocal lenses:** 7-10 working days.\n- **Contact lenses not available in stock:** 3-7 working days.\n\nWe will notify you via WhatsApp or SMS when your order is ready for collection.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "lens-progressive",
+        "kebijakan-pesanan",
+        "kebijakan-pengembalian"
+      ],
+      "top_similarity": 0.6912,
+      "cited_doc_ids": [
+        "lens-progressive"
+      ],
+      "latency_ms": 9109,
+      "input_tokens": 1891,
+      "output_tokens": 140,
+      "retrieval_hit": true,
+      "citation_hit": false,
+      "judge_reason": "The chatbot provides a detailed breakdown of lens processing times, including specific ranges for progressive lenses (7-10 working days), while the reference answer only gives a single timeframe.",
+      "outcome": "partial"
+    },
+    {
+      "id": "q25",
+      "language": "id",
+      "question": "Apakah pemeriksaan mata di toko gratis, dan berapa lama?",
+      "expected_in_scope": true,
+      "expected_answer": "Gratis tanpa harus membeli, sekitar 20–30 menit.",
+      "expected_sources": [
+        "policy-eye-exam-booking"
+      ],
+      "answer": "Pemeriksaan mata di toko gratis, dan berlangsung selama 20 hingga 30 menit.",
+      "predicted_in_scope": true,
+      "retrieved_doc_ids": [
+        "policy-eye-exam-booking",
+        "eye-health-faq",
+        "policy-warranty",
+        "kebijakan-pengembalian"
+      ],
+      "top_similarity": 0.6628,
+      "cited_doc_ids": [
+        "policy-eye-exam-booking"
+      ],
+      "latency_ms": 3863,
+      "input_tokens": 1912,
+      "output_tokens": 31,
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "judge_reason": "The chatbot answer accurately reflects the key information in the reference answer regarding the cost and duration of the eye exam.",
+      "outcome": "correct"
+    },
+    {
+      "id": "q26",
+      "language": "en",
+      "question": "How much do progressive lenses cost?",
+      "expected_in_scope": false,
+      "expected_answer": "Not in the knowledge base (no prices).",
+      "expected_sources": [],
+      "answer": "Sorry, I couldn't find that information in our knowledge base. Please ask store staff for more details.",
+      "predicted_in_scope": false,
+      "retrieved_doc_ids": [
+        "lens-progressive",
+        "kebijakan-pengembalian",
+        "kebijakan-pesanan"
+      ],
+      "top_similarity": 0.6623,
+      "cited_doc_ids": [],
+      "latency_ms": 3731,
+      "input_tokens": 1888,
+      "output_tokens": 29,
+      "outcome": "correct_refusal"
+    },
+    {
+      "id": "q27",
+      "language": "id",
+      "question": "Apakah toko menerima pembayaran dengan BPJS Kesehatan?",
+      "expected_in_scope": false,
+      "expected_answer": "Tidak ada di basis pengetahuan.",
+      "expected_sources": [],
+      "answer": "Maaf, saya tidak menemukan informasi tersebut di basis pengetahuan kami.",
+      "predicted_in_scope": false,
+      "retrieved_doc_ids": [
+        "kebijakan-pengembalian",
+        "policy-eye-exam-booking",
+        "kebijakan-pesanan"
+      ],
+      "top_similarity": 0.4747,
+      "cited_doc_ids": [],
+      "latency_ms": 3277,
+      "input_tokens": 1928,
+      "output_tokens": 18,
+      "outcome": "correct_refusal"
+    },
+    {
+      "id": "q28",
+      "language": "en",
+      "question": "Can LASIK surgery fix my astigmatism?",
+      "expected_in_scope": false,
+      "expected_answer": "Not in the knowledge base.",
+      "expected_sources": [],
+      "answer": "Sorry, I couldn't find that information in our knowledge base. Please consult with an eye-care professional for health questions.",
+      "predicted_in_scope": false,
+      "retrieved_doc_ids": [
+        "lens-single-vision",
+        "eye-health-faq",
+        "prescription-reading"
+      ],
+      "top_similarity": 0.5423,
+      "cited_doc_ids": [],
+      "latency_ms": 3953,
+      "input_tokens": 1966,
+      "output_tokens": 31,
+      "outcome": "correct_refusal"
+    },
+    {
+      "id": "q29",
+      "language": "id",
+      "question": "Jam berapa toko buka pada hari Minggu?",
+      "expected_in_scope": false,
+      "expected_answer": "Tidak ada di basis pengetahuan (jam buka tidak tercantum).",
+      "expected_sources": [],
+      "answer": "Maaf, saya tidak menemukan informasi tersebut di basis pengetahuan kami. Silakan tanyakan langsung ke staf toko.",
+      "predicted_in_scope": false,
+      "retrieved_doc_ids": [
+        "kebijakan-pengembalian",
+        "kebijakan-pesanan",
+        "policy-warranty"
+      ],
+      "top_similarity": 0.4656,
+      "cited_doc_ids": [],
+      "latency_ms": 3473,
+      "input_tokens": 1660,
+      "output_tokens": 27,
+      "outcome": "correct_refusal"
+    },
+    {
+      "id": "q30",
+      "language": "en",
+      "question": "What's the best laptop for programming?",
+      "expected_in_scope": false,
+      "expected_answer": "Off-topic; not in the knowledge base.",
+      "expected_sources": [],
+      "answer": "Sorry, I couldn't find that information in our knowledge base. Please ask store staff for assistance.",
+      "predicted_in_scope": false,
+      "retrieved_doc_ids": [
+        "lens-progressive",
+        "mata-lelah-digital",
+        "frame-materials",
+        "lensa-bifokal"
+      ],
+      "top_similarity": 0.393,
+      "cited_doc_ids": [],
+      "latency_ms": 3703,
+      "input_tokens": 1924,
+      "output_tokens": 26,
+      "outcome": "correct_refusal"
+    }
+  ]
+}

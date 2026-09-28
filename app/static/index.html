@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optik Assistant</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --text: #1b1f24;
+    --muted: #5d6673;
+    --border: #dfe3e8;
+    --accent: #0b6e69;
+    --accent-text: #ffffff;
+    --user-bubble: #0b6e69;
+    --source-bg: #f1f4f6;
+    --warn-bg: #fff4d6;
+    --warn-text: #7a5400;
+    --error: #b42318;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111417;
+      --surface: #1a1e23;
+      --text: #e7eaee;
+      --muted: #9aa4b1;
+      --border: #2d333b;
+      --accent: #3fb8af;
+      --accent-text: #0b1415;
+      --user-bubble: #1f5e5a;
+      --source-bg: #22272e;
+      --warn-bg: #3a2f12;
+      --warn-text: #f3cf73;
+      --error: #ff8a80;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  header .inner, main .inner, footer .inner { max-width: 760px; margin: 0 auto; }
+  header h1 { margin: 0; font-size: 17px; }
+  header p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  main { flex: 1; overflow-y: auto; padding: 20px 16px; }
+  .msg { margin-bottom: 18px; display: flex; flex-direction: column; }
+  .msg.user { align-items: flex-end; }
+  .bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .user .bubble { background: var(--user-bubble); color: #fff; border-bottom-right-radius: 4px; }
+  .bot .bubble { background: var(--surface); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+  .bot .bubble.error { color: var(--error); }
+  .bot .bubble.out-of-scope { border-style: dashed; }
+  .meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .sources { margin-top: 8px; max-width: 85%; display: grid; gap: 6px; }
+  .sources-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  details.source {
+    background: var(--source-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  details.source summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  details.source p { margin: 6px 0 2px; color: var(--muted); }
+  .badge {
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .badge.sample { background: var(--warn-bg); color: var(--warn-text); border-color: transparent; }
+  .welcome { color: var(--muted); }
+  .suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .suggestions button {
+    font: inherit;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .suggestions button:hover { border-color: var(--accent); }
+  .typing { color: var(--muted); font-style: italic; }
+  footer { border-top: 1px solid var(--border); background: var(--surface); padding: 12px 16px; }
+  form { display: flex; gap: 8px; }
+  textarea {
+    flex: 1;
+    resize: none;
+    font: inherit;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 44px;
+    max-height: 140px;
+  }
+  textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  button.send {
+    font: inherit;
+    font-weight: 600;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--accent-text);
+    cursor: pointer;
+  }
+  button.send:disabled { opacity: .5; cursor: default; }
+  .disclaimer { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  @media (max-width: 520px) {
+    .bubble, .sources { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Optik Assistant</h1>
+    <p>Ask about lenses, frames, contact lenses, eye care, and store policies · English / Bahasa Indonesia</p>
+  </div>
+</header>
+
+<main id="chat">
+  <div class="inner" id="messages">
+    <div class="msg bot welcome">
+      <div>Hi! I answer from the store's knowledge base and show the documents I used. Try one of these:</div>
+      <div class="suggestions">
+        <button type="button">How long does it take to get used to progressive lenses?</button>
+        <button type="button">Apa arti AXIS di resep kacamata?</button>
+        <button type="button">Do blue light glasses reduce eye strain?</button>
+        <button type="button">Bisakah saya mengembalikan kacamata dengan lensa resep?</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <form id="form">
+      <textarea id="input" rows="1" placeholder="Type your question… / Ketik pertanyaan Anda…" maxlength="1000" required></textarea>
+      <button class="send" id="send" type="submit">Send</button>
+    </form>
+    <div class="disclaimer">Demo project. Store policies are sample data, not the policies of any real store. Not medical advice.</div>
+  </div>
+</footer>
+
+<script>
+  const messages = document.getElementById("messages");
+  const chat = document.getElementById("chat");
+  const form = document.getElementById("form");
+  const input = document.getElementById("input");
+  const send = document.getElementById("send");
+
+  const LANG = { en: "English", id: "Indonesian" };
+
+  function el(tag, props = {}, children = []) {
+    const node = Object.assign(document.createElement(tag), props);
+    for (const child of [].concat(children)) node.append(child);
+    return node;
+  }
+
+  function addMessage(role, content) {
+    const msg = el("div", { className: `msg ${role}` });
+    msg.append(el("div", { className: "bubble" }, content));
+    messages.append(msg);
+    chat.scrollTop = chat.scrollHeight;
+    return msg;
+  }
+
+  function renderSources(sources) {
+    const box = el("div", { className: "sources" }, el("div", { className: "sources-label", textContent: "Sources" }));
+    for (const s of sources) {
+      const badges = [el("span", { className: "badge", textContent: LANG[s.language] || s.language })];
+      if (s.sample_policy) badges.push(el("span", { className: "badge sample", textContent: "Sample policy" }));
+      badges.push(el("span", { className: "badge", textContent: `${Math.round(s.similarity * 100)}% match` }));
+      box.append(el("details", { className: "source" }, [
+        el("summary", {}, [el("strong", { textContent: s.title }), ...badges]),
+        el("p", { textContent: s.snippet }),
+      ]));
+    }
+    return box;
+  }
+
+  async function ask(question) {
+    addMessage("user", question);
+    const pending = addMessage("bot", el("span", { className: "typing", textContent: "Searching the knowledge base…" }));
+    send.disabled = true;
+
+    try {
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.detail ? JSON.stringify(data.detail) : `HTTP ${res.status}`);
+
+      const bubble = pending.querySelector(".bubble");
+      bubble.textContent = data.answer;
+      if (!data.in_scope) bubble.classList.add("out-of-scope");
+      if (data.sources.length) pending.append(renderSources(data.sources));
+      pending.append(el("div", { className: "meta", textContent: `${data.model} · ${(data.latency_ms / 1000).toFixed(1)}s` }));
+    } catch (err) {
+      const bubble = pending.querySelector(".bubble");
+      bubble.textContent = `Something went wrong: ${err.message}`;
+      bubble.classList.add("error");
+    } finally {
+      send.disabled = false;
+      chat.scrollTop = chat.scrollHeight;
+      input.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const question = input.value.trim();
+    if (!question || send.disabled) return;
+    input.value = "";
+    input.style.height = "";
+    ask(question);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  input.addEventListener("input", () => {
+    input.style.height = "";
+    input.style.height = `${input.scrollHeight}px`;
+  });
+
+  document.querySelectorAll(".suggestions button").forEach((btn) =>
+    btn.addEventListener("click", () => { if (!send.disabled) ask(btn.textContent); })
+  );
+</script>
+</body>
+</html>
